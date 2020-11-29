@@ -15,13 +15,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IOC", "IOC", "{5CD0F36F-24C
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PresentationLayer", "PresentationLayer", "{5CB53FD7-BC20-45AD-ABBA-973D912A56EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Data", "ShoppingCart.Data\ShoppingCart.Data.csproj", "{C7F2FA1B-D54B-4C2F-91ED-81D2880D1D39}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.Data", "ShoppingCart.Data\ShoppingCart.Data.csproj", "{C7F2FA1B-D54B-4C2F-91ED-81D2880D1D39}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Domain", "ShoppingCart.Domain\ShoppingCart.Domain.csproj", "{83082274-4F93-4CE6-ACD8-DE388E771E4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.Domain", "ShoppingCart.Domain\ShoppingCart.Domain.csproj", "{83082274-4F93-4CE6-ACD8-DE388E771E4F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.Application", "ShoppingCart.Application\ShoppingCart.Application.csproj", "{18A06C9E-D621-43C4-A229-7E9602C89962}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.Application", "ShoppingCart.Application\ShoppingCart.Application.csproj", "{18A06C9E-D621-43C4-A229-7E9602C89962}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ShoppingCart.IOC", "ShoppingCart.IOC\ShoppingCart.IOC.csproj", "{63C42CB4-C134-408C-859B-294A46E94259}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShoppingCart.IOC", "ShoppingCart.IOC\ShoppingCart.IOC.csproj", "{63C42CB4-C134-408C-859B-294A46E94259}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
