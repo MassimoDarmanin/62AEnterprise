@@ -44,14 +44,13 @@
             }
             else
             {
-                if (ViewData["divcolor"] != null)
+                if (ViewData["warning"] != null)
                 {
-                    if (ViewData["divcolor"].ToString() == "warning")
-                    {
-                        <div class="alert alert-warning" role="alert">
-                            @ViewData["Feedback"]
-                        </div>
-                    }
+                    
+                    <div class="alert alert-warning" role="alert">
+                        @ViewData["Feedback"]
+                    </div>
+                    
                 }
             }
 

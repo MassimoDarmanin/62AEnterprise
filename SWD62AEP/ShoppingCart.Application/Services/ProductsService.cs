@@ -1,6 +1,8 @@
-﻿using ShoppingCart.Application.Interfaces;
+﻿using Microsoft.EntityFrameworkCore.Diagnostics;
+using ShoppingCart.Application.Interfaces;
 using ShoppingCart.Application.ViewModels;
 using ShoppingCart.Domain.Interfaces;
+using ShoppingCart.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,7 +19,7 @@ namespace ShoppingCart.Application.Services
         }
 
         public IQueryable<ProductViewModel> GetProducts()
-        {
+        {   //converting from Product into ProductViewModel
             var list = from p in _productRepo.GetProducts()
                        select new ProductViewModel()
                        {
@@ -26,12 +28,56 @@ namespace ShoppingCart.Application.Services
                            Price = p.Price,
                            Description = p.Description,
                            ImageUrl = p.ImageUrl,
-                           Category = new CategoryViewModel()
-                           {
-                               Id = p.Category.Id, Name = p.Category.Name
-                           }
+                           Category = new CategoryViewModel() { Id = p.Category.Id, Name = p.Category.Name }
                        };
+
             return list;
+        }
+
+        public ProductViewModel GetProduct(Guid id)
+        {
+            ProductViewModel myViewModel = new ProductViewModel();
+            var productFromDb = _productRepo.GetProduct(id);
+
+            myViewModel.Description = productFromDb.Description;
+            myViewModel.Id = productFromDb.Id;
+            myViewModel.ImageUrl = productFromDb.ImageUrl;
+            myViewModel.Name = productFromDb.Name;
+            myViewModel.Price = productFromDb.Price;
+            myViewModel.Category = new CategoryViewModel();
+            myViewModel.Category.Id = productFromDb.Category.Id; //NullReferenceException --> a property is still null!!
+            myViewModel.Category.Name = productFromDb.Category.Name;
+
+            return myViewModel;
+
+        }
+
+        public void AddProduct(ProductViewModel data)
+        {
+            //AutoMapper (NuGet Package)
+
+            //ProductViewModel ====> Product
+
+            Product p = new Product();
+            p.Description = data.Description;
+            p.ImageUrl = data.ImageUrl;
+            p.Name = data.Name;
+            p.Price = data.Price;
+            p.CategoryId = data.Category.Id;
+
+            _productRepo.AddProduct(p);
+
+        }
+
+        public void DeleteProduct(Guid id)
+        {
+            if (_productRepo.GetProduct(id) != null)
+                _productRepo.DeleteProduct(id);
+        }
+
+        public void DeleteProduct(ProductViewModel data)
+        {
+            throw new NotImplementedException();
         }
     }
 }

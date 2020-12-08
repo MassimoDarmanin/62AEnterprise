@@ -31,5 +31,31 @@ namespace Presentation.Controllers
 
             return View(myProduct);
         }
+        //
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(ProductViewModel data)
+        {
+            try
+            {
+                _productsSevice.AddProduct(data);
+
+                ViewData["feedback"] = "Product was added successfully";
+                ModelState.Clear();
+            }
+            catch(Exception ex)
+            {
+                //log errors
+                ViewData["warning"] = "Product was not added. Check your details";
+            }
+
+            return View();
+        }
+        //
     }
 }
