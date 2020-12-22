@@ -8,13 +8,13 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Create">
+        <form asp-action="Create" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <!--<div class="form-group">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="Id" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>-->
+        <label asp-for="Id" class="control-label"></label>
+        <input asp-for="Id" class="form-control" />
+        <span asp-validation-for="Id" class="text-danger"></span>
+    </div>-->
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -37,8 +37,21 @@
                 <span asp-validation-for="ImageUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label class="control-label">Select a local file</label>
+                <input type="file" name="file" class="form-control" />
+            </div>
+
+            <div class="form-group">
                 <label class="control-label">Category</label>
-                <input asp-for="Category.Id" class="form-control" />
+                <!--<input asp-for="Category.Id" class="form-control" />-->
+
+                <select asp-for="Category.Id" class="form-control">
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+
                 <span asp-validation-for="Category.Id" class="text-danger"></span>
             </div>
 

@@ -74,10 +74,5 @@ namespace ShoppingCart.Application.Services
             if (_productRepo.GetProduct(id) != null)
                 _productRepo.DeleteProduct(id);
         }
-
-        public void DeleteProduct(ProductViewModel data)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
